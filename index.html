@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRAND ALITH RESIDENCE</title>
 <style>
+  /* 全体の設定 */
+  * {
+    box-sizing: border-box; /* はみ出し防止 */
+  }
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 60px;
@@ -15,6 +19,7 @@
     background-color: #111;
     color: #fff;
     line-height: 1.6;
+    overflow-x: hidden; /* 横揺れ防止 */
   }
   header {
     position: fixed;
@@ -41,6 +46,7 @@
     transition: 0.3s;
   }
   nav a:hover { color: #fff; }
+
   section {
     padding: 100px 20px;
     text-align: center;
@@ -48,6 +54,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
   h2 {
     font-size: 36px;
@@ -56,19 +63,260 @@
     margin-bottom: 40px;
     font-weight: normal;
   }
+
+  /* 背景設定（デスクトップ版：少し明るく修正） */
   .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774929283753.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1774929283753.png') no-repeat center center/cover;
   }
   .hero h1 {
     font-size: 60px;
     margin: 0;
     letter-spacing: 8px;
     font-weight: 300;
+    word-wrap: break-word;
   }
   .hero p {
     font-size: 20px;
     letter-spacing: 4px;
     margin-top: 20px;
+    color: #e0e0e0;
+  }
+  .concept {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('1774930837657.png') no-repeat center center/cover;
+  }
+  .concept p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #fff; /* 文字をはっきりさせる */
+    line-height: 2;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+  }
+  .facilities {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('1774930856491.png') no-repeat center center/cover;
+  }
+  .facilities .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 300pxから少し縮小 */
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card {
+    background: rgba(34, 34, 34, 0.9); /* 少し透過させてリッチに */
+    padding: 40px 30px;
+    border: 1px solid #333;
+    transition: 0.3s;
+  }
+  .card:hover { border-color: #cfaa5d; }
+  .card h3 { color: #cfaa5d; margin-top: 0; }
+  .card p { color: #ddd; font-size: 14px; }
+
+  .location {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('1774931284891.png') no-repeat center center/cover;
+  }
+  .contact { background: #111; }
+  
+  .btn {
+    display: inline-block;
+    padding: 15px 50px;
+    background: #cfaa5d;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .btn:hover { background: #fff; }
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #000;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+ 
+  /* モーダル */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal-content {
+    background: #222;
+    padding: 50px;
+    border: 1px solid #cfaa5d;
+    text-align: center;
+    transform: scale(0.8);
+    transition: 0.3s;
+  }
+  .modal-overlay.active .modal-content {
+    transform: scale(1);
+  }
+  .modal-content h3 {
+    color: #cfaa5d;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .close-btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    letter-spacing: 2px;
+  }
+ 
+  /* スマホ用レスポンシブ修正 */
+  @media (max-width: 768px) {
+    nav ul {
+      gap: 10px 15px;
+    }
+    nav a {
+      font-size: 11px; 
+    }
+    .hero h1 {
+      font-size: 28px; 
+      letter-spacing: 3px;
+    }
+    .hero p {
+      font-size: 14px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    section {
+      padding: 60px 15px; 
+    }
+    
+    /* スマホ版背景：さらに少し明るく */
+    .hero { 
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('1774929283753.png') no-repeat center center/cover; 
+    }
+    .concept { 
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774930837657.png') no-repeat center center/cover; 
+    }
+    .facilities { 
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774930856491.png') no-repeat center center/cover; 
+    }
+    .location { 
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774931284891.png') no-repeat center center/cover; 
+    }
+ 
+    .modal-content {
+      padding: 30px 20px;
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+ 
+<header>
+  <nav>
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#concept">CONCEPT</a></li>
+      <li><a href="#facilities">FACILITIES</a></li>
+      <li><a href="#location">LOCATION</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+ 
+<section id="home" class="hero">
+  <h1>YASU ALITH RESIDENCE</h1>
+  <p>選ばれし者の、頂点へ。</p>
+</section>
+ 
+<section id="concept" class="concept">
+  <h2>CONCEPT</h2>
+  <p>都市の喧騒を忘れさせる、静寂と気品に満ちた空間。<br><br>細部までこだわり抜いた至高のレジデンスが、ここに誕生します。<br>新たなステータスを、あなたの手に。</p>
+</section>
+ 
+<section id="facilities" class="facilities">
+  <h2>FACILITIES</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Premium Lounge</h3>
+      <p>居住者専用のラグジュアリーな空間。上質な時間をお約束します。</p>
+    </div>
+    <div class="card">
+      <h3>Fitness Room</h3>
+      <p>最新の機器を揃えた、24時間利用可能なプライベートジム。</p>
+    </div>
+    <div class="card">
+      <h3>Concierge</h3>
+      <p>あらゆるご要望にお応えする、専任のコンシェルジュデスク。</p>
+    </div>
+  </div>
+</section>
+ 
+<section id="location" class="location">
+  <h2>LOCATION</h2>
+  <p>滋賀の中心。ビジネスにもプライベートにも最適なアクセス。<br>野洲駅から徒歩3分の、圧倒的な利便性。</p>
+</section>
+ 
+<section id="contact" class="contact">
+  <h2>CONTACT</h2>
+  <p>モデルルーム事前案内会、予約受付中。</p>
+  <a class="btn" id="entryBtn">ENTRY</a>
+</section>
+ 
+<footer>
+  &copy; 2026 YASU ALITH RESIDENCE.
+</footer>
+ 
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <h3>うっそ〜エイプリルフールだよ〜</h3>
+    <button class="close-btn" id="closeBtn">CLOSE</button>
+  </div>
+</div>
+ 
+<script>
+  const entryBtn = document.getElementById('entryBtn');
+  const modal = document.getElementById('modal');
+  const closeBtn = document.getElementById('closeBtn');
+ 
+  entryBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+  });
+ 
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+ 
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+</script>
+ 
+</body>
+</html>
     color: #e0e0e0;
   }
   .concept {
