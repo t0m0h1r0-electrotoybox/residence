@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRAND RESIDENCE</title>
 <style>
-  /* ここに追加と移動をした */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 60px; /* ヘッダーの高さ分、止まる位置をずらす */
+    scroll-padding-top: 60px;
   }
   body {
     margin: 0;
@@ -58,7 +57,8 @@
     font-weight: normal;
   }
   .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://raw.githubusercontent.com/t0m0h1r0-electrotoybox/residence/refs/heads/main/1774929283753.png') no-repeat center center/cover;
+    /* URLの途切れを修正。同じリポジトリ内ならファイル名だけでOK */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774929283753.png') no-repeat center center/cover;
   }
   .hero h1 {
     font-size: 60px;
@@ -120,7 +120,6 @@
     letter-spacing: 1px;
   }
  
-  /* モーダル用のCSS */
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -170,6 +169,38 @@
   .close-btn:hover {
     background: #cfaa5d;
     color: #000;
+  }
+ 
+  /* --- スマホ用に追加したCSS --- */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-wrap: wrap; /* はみ出さないように折り返す */
+      gap: 10px 20px;
+      padding: 0 10px;
+    }
+    nav a {
+      font-size: 12px; /* メニューの文字を少し小さく */
+    }
+    .hero h1 {
+      font-size: 32px; /* スマホ用にタイトルを小さく */
+      letter-spacing: 4px;
+    }
+    .hero p {
+      font-size: 14px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+    section {
+      padding: 80px 15px; /* 全体の余白も調整 */
+    }
+    .modal-content {
+      padding: 30px 20px;
+      width: 80%;
+    }
+    .modal-content h3 {
+      font-size: 18px;
+    }
   }
 </style>
 </head>
@@ -238,22 +269,18 @@
 </div>
  
 <script>
-  // JavaScriptでモーダルの動きを制御
   const entryBtn = document.getElementById('entryBtn');
   const modal = document.getElementById('modal');
   const closeBtn = document.getElementById('closeBtn');
  
-  // ENTRYクリックで開く
   entryBtn.addEventListener('click', () => {
     modal.classList.add('active');
   });
  
-  // CLOSEクリックで閉じる
   closeBtn.addEventListener('click', () => {
     modal.classList.remove('active');
   });
  
-  // 背景クリックでも閉じる
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.classList.remove('active');
