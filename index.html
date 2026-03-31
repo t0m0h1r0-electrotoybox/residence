@@ -57,7 +57,6 @@
     font-weight: normal;
   }
   .hero {
-    /* 1. HOMEセクション（以前提供された画像） */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774929283753.png') no-repeat center center/cover;
   }
   .hero h1 {
@@ -73,8 +72,6 @@
     color: #e0e0e0;
   }
   .concept {
-    /* 2. CONCEPTセクション（エントランス風画像プレースホルダー） */
-    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('1774930837657.png') no-repeat center center/cover;
   }
   .concept p {
@@ -85,8 +82,6 @@
     line-height: 2;
   }
   .facilities {
-    /* 3. FACILITIESセクション（ルーム・インテリア風画像プレースホルダー） */
-    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('1774930856491.png') no-repeat center center/cover;
   }
   .facilities .grid {
@@ -106,8 +101,6 @@
   .card h3 { color: #cfaa5d; margin-top: 0; }
   .card p { color: #aaa; font-size: 14px; }
   .location {
-    /* 4. LOCATIONセクション（風景風画像プレースホルダー - 滋賀の琵琶湖周辺） */
-    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('1774931284891.png') no-repeat center center/cover;
   }
   .contact { background: #111; }
@@ -187,15 +180,15 @@
   /* --- スマホ用に追加したCSS --- */
   @media (max-width: 768px) {
     nav ul {
-      flex-wrap: wrap; /* はみ出さないように折り返す */
+      flex-wrap: wrap; 
       gap: 10px 20px;
       padding: 0 10px;
     }
     nav a {
-      font-size: 12px; /* メニューの文字を少し小さく */
+      font-size: 12px; 
     }
     .hero h1 {
-      font-size: 32px; /* スマホ用にタイトルを小さく */
+      font-size: 32px; 
       letter-spacing: 4px;
     }
     .hero p {
@@ -205,17 +198,22 @@
       font-size: 28px;
     }
     section {
-      padding: 80px 15px; /* 全体の余白も調整 */
+      padding: 80px 15px; 
     }
-    /* スマホで文字が見やすくなるように、オーバーレイを濃く調整 */
-    .hero, .concept, .facilities, .location {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), no-repeat center center/cover;
+    
+    /* 横着せずに、スマホ用にもグラデーションと画像をフルで書く */
+    .hero { 
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url('1774929283753.png') no-repeat center center/cover; 
     }
-    /* 画像を維持 */
-    .hero { background-image: url('1774929283753.png'); }
-    .concept { background-image: url('1774930837657.png'); }
-    .facilities { background-image: url('1774930856491.png'); }
-    .location { background-image: url('1774931284891.png'); }
+    .concept { 
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url('1774930837657.png') no-repeat center center/cover; 
+    }
+    .facilities { 
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url('1774930856491.png') no-repeat center center/cover; 
+    }
+    .location { 
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url('1774931284891.png') no-repeat center center/cover; 
+    }
  
     .modal-content {
       padding: 30px 20px;
@@ -313,4 +311,3 @@
  
 </body>
 </html>
- 
