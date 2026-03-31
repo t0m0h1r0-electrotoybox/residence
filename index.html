@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRAND RESIDENCE</title>
+<title>GRAND ALITH RESIDENCE</title>
 <style>
   html {
     scroll-behavior: smooth;
@@ -57,7 +57,7 @@
     font-weight: normal;
   }
   .hero {
-    /* URLの途切れを修正。同じリポジトリ内ならファイル名だけでOK */
+    /* 1. HOMEセクション（以前提供された画像） */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('1774929283753.png') no-repeat center center/cover;
   }
   .hero h1 {
@@ -72,13 +72,22 @@
     margin-top: 20px;
     color: #e0e0e0;
   }
-  .concept { background: #1a1a1a; }
+  .concept {
+    /* 2. CONCEPTセクション（エントランス風画像プレースホルダー） */
+    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
+  }
   .concept p {
     max-width: 600px;
     margin: 0 auto;
     font-size: 16px;
     color: #ccc;
     line-height: 2;
+  }
+  .facilities {
+    /* 3. FACILITIESセクション（ルーム・インテリア風画像プレースホルダー） */
+    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
   }
   .facilities .grid {
     display: grid;
@@ -96,7 +105,11 @@
   .card:hover { border-color: #cfaa5d; }
   .card h3 { color: #cfaa5d; margin-top: 0; }
   .card p { color: #aaa; font-size: 14px; }
-  .location { background: #1a1a1a; }
+  .location {
+    /* 4. LOCATIONセクション（風景風画像プレースホルダー - 滋賀の琵琶湖周辺） */
+    /* 自分で画像を用意したら、url('YOUR_IMAGE.png')に書き換えてください。 */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1611090691370-128228515324?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
+  }
   .contact { background: #111; }
   .btn {
     display: inline-block;
@@ -194,6 +207,16 @@
     section {
       padding: 80px 15px; /* 全体の余白も調整 */
     }
+    /* スマホで文字が見やすくなるように、オーバーレイを濃く調整 */
+    .hero, .concept, .facilities, .location {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), no-repeat center center/cover;
+    }
+    /* 画像を維持 */
+    .hero { background-image: url('1774929283753.png'); }
+    .concept { background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&q=80&w=1000'); }
+    .facilities { background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=1000'); }
+    .location { background-image: url('https://images.unsplash.com/photo-1611090691370-128228515324?auto=format&fit=crop&q=80&w=1000'); }
+ 
     .modal-content {
       padding: 30px 20px;
       width: 80%;
@@ -290,3 +313,4 @@
  
 </body>
 </html>
+ 
