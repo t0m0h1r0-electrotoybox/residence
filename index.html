@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAND RESIDENCE</title>
+<style>
+  /* ここに追加と移動をした */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px; /* ヘッダーの高さ分、止まる位置をずらす */
+  }
+  body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #111;
+    color: #fff;
+    line-height: 1.6;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid #cfaa5d;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  nav a {
+    color: #cfaa5d;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+  }
+  nav a:hover { color: #fff; }
+  section {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h2 {
+    font-size: 36px;
+    color: #cfaa5d;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    font-weight: normal;
+  }
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+  }
+  .hero h1 {
+    font-size: 60px;
+    margin: 0;
+    letter-spacing: 8px;
+    font-weight: 300;
+  }
+  .hero p {
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-top: 20px;
+    color: #e0e0e0;
+  }
+  .concept { background: #1a1a1a; }
+  .concept p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #ccc;
+    line-height: 2;
+  }
+  .facilities .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #222;
+    padding: 40px 30px;
+    border: 1px solid #333;
+    transition: 0.3s;
+  }
+  .card:hover { border-color: #cfaa5d; }
+  .card h3 { color: #cfaa5d; margin-top: 0; }
+  .card p { color: #aaa; font-size: 14px; }
+  .location { background: #1a1a1a; }
+  .contact { background: #111; }
+  .btn {
+    display: inline-block;
+    padding: 15px 50px;
+    background: #cfaa5d;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .btn:hover { background: #fff; }
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #000;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+ 
+  /* モーダル用のCSS */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal-content {
+    background: #222;
+    padding: 50px;
+    border: 1px solid #cfaa5d;
+    text-align: center;
+    transform: scale(0.8);
+    transition: 0.3s;
+  }
+  .modal-overlay.active .modal-content {
+    transform: scale(1);
+  }
+  .modal-content h3 {
+    color: #cfaa5d;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .close-btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    letter-spacing: 2px;
+  }
+  .close-btn:hover {
+    background: #cfaa5d;
+    color: #000;
+  }
+</style>
+</head>
+<body>
+ 
+<header>
+  <nav>
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#concept">CONCEPT</a></li>
+      <li><a href="#facilities">FACILITIES</a></li>
+      <li><a href="#location">LOCATION</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+ 
+<section id="home" class="hero">
+  <h1>YASU ALITH RESIDENCE</h1>
+  <p>選ばれし者の、頂点へ。</p>
+</section>
+ 
+<section id="concept" class="concept">
+  <h2>CONCEPT</h2>
+  <p>都市の喧騒を忘れさせる、静寂と気品に満ちた空間。<br><br>細部までこだわり抜いた至高のレジデンスが、ここに誕生します。<br>新たなステータスを、あなたの手に。</p>
+</section>
+ 
+<section id="facilities" class="facilities">
+  <h2>FACILITIES</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Premium Lounge</h3>
+      <p>居住者専用のラグジュアリーな空間。上質な時間をお約束します。</p>
+    </div>
+    <div class="card">
+      <h3>Fitness Room</h3>
+      <p>最新の機器を揃えた、24時間利用可能なプライベートジム。</p>
+    </div>
+    <div class="card">
+      <h3>Concierge</h3>
+      <p>あらゆるご要望にお応えする、専任のコンシェルジュデスク。</p>
+    </div>
+  </div>
+</section>
+ 
+<section id="location" class="location">
+  <h2>LOCATION</h2>
+  <p>滋賀の中心。ビジネスにもプライベートにも最適なアクセス。<br>野洲駅から徒歩3分の、圧倒的な利便性。</p>
+</section>
+ 
+<section id="contact" class="contact">
+  <h2>CONTACT</h2>
+  <p>モデルルーム事前案内会、予約受付中。</p>
+  <a class="btn" id="entryBtn">ENTRY</a>
+</section>
+ 
+<footer>
+  &copy; 2026 YASU ALITH RESIDENCE.
+</footer>
+ 
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <h3>うっそ〜エイプリルフールだよ〜</h3>
+    <button class="close-btn" id="closeBtn">CLOSE</button>
+  </div>
+</div>
+ 
+<script>
+  // JavaScriptでモーダルの動きを制御
+  const entryBtn = document.getElementById('entryBtn');
+  const modal = document.getElementById('modal');
+  const closeBtn = document.getElementById('closeBtn');
+ 
+  // ENTRYクリックで開く
+  entryBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+  });
+ 
+  // CLOSEクリックで閉じる
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+ 
+  // 背景クリックでも閉じる
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+</script>
+ 
+</body>
+</html>
